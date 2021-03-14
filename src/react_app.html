@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React</title>
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src = "https://unpkg.com/react@17/umd/react.development.js">
+    </script>
+    <script src = "https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <h1 class="bg-primary text-white display-4">React</h1>
+    <div class="container mt-3">
+      <div id="root">wait...</div>
+    </div>
+    <script type="text/babel">
+    let dom = document.querySelector('#root')
+    
+    let title = "new title"
+    let message = "new message"
+    let link = "http://google.com"
+    const msg_s = {
+      fontSize: "20pt",
+      fontWight: "bold",
+      color: "red",
+      border: "1px solid green"
+    }
+
+    let printMsg = function(msg, size, color){
+      const style = {
+        fontSize: size + "pt",
+        fontWight: '700',
+        color: color,
+        border: "1px solid" + color
+      }
+      return <p style = {style}>{msg}</p>
+    }
+    let flag = false
+
+    let data = [
+      {name: 'taro', mail: 'taro@mail.com', age: 23},
+      {name: 'hanako', mail: 'hanako@mail.com', age: 55},
+      {name: 'joege', mail: 'joege@mail.com', age: 13},
+      {name: 'kumi', mail: 'kumi@mail.com', age: 63},
+    ]
+    let data1 = {
+      url: 'http://google.com',
+      title: 'Google',
+      caption: '※これは, Googleの検索サイトです'
+    }
+
+    let in_val = ''
+
+    let doChange = (event) => {
+      in_val = event.target.value
+      message = "こんにちは" + in_val + "さん!!"
+    }
+
+    let doAction = (event) => {
+
+      let el = (
+        // JSXでは通常のclassをclassNameと記述する
+        // JSの予約語であるclassと区別するため
+        <div className="alert alert-primary">
+          <h2>{title}</h2>
+          <h5><a href = {link}>this is link!</a></h5>
+          <p style = {msg_s}>{message}</p>
+          {flag ?
+          <div className= "alert alert-secondary mt-3">
+            {printMsg(message, 36, '#fff')}
+            {printMsg('second', 24, '#aaa')}
+          </div>
+          :
+          <div><h2>hello!</h2></div>
+          }
+          <div>
+          <table className = 'table table-striped mt-4'>
+            <thead className = 'thead-dark'>
+              <tr>
+                <th>name</th>
+                <th>mail</th>
+                <th>age</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((val) => (
+                <tr>
+                  <td>{val.name}</td>
+                  <td>{val.mail}</td>
+                  <td>{val.age}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          </div>
+          {(() => 
+            <div className = "card mt-4">
+              <div className = "card-header">
+                {data1.title}
+              </div>
+              <div className = "card-body">
+                {data1.caption}
+              </div>
+              <div className = "card-footer">
+                <a href = {data1.url}>{data1.title}に移動</a>
+              </div>
+            </div>
+          )()}
+          <div className = "form-group">
+            <label>Input:</label>
+            <input type = "text" className = "form-control" id = "input" onChange = {doChange}/>
+          </div>
+          <button onClick = {doAction} className = "btn btn-primary">
+            Click
+          </button>
+        </div>
+      )
+      ReactDOM.render(el, dom)
+      }
+      doAction()
+    </script>
+  </body>
+</html>
