@@ -9,6 +9,8 @@
 - 下の方でstyleを指定する時は、`<style>{``}</style>`という書式で書く（また、その際、普通のh1, inputなどのタグ名は、`h1{}`で、class名は`.form-control`のようにドットをつける）
 - htmleForはlabelに付与することで、同じ内容のid属性を持つ要素と関連付けれれる(p210)
 - 関数コンポーネントで引数を渡すときは、`props.message`　を関数側で、`message`だけを呼び出し側で書く
+- useEffectは、引数に何も指定しないと最初はreturnの後にも再び実行されるので、合計2回実行される
+- (p239)useEffectの中にsetMsg(res)のようなものを入れると、レンダリングされる度にuseEffectは呼ばれるので、無限にuseEffectが呼ばれるようになる
 
 
 ### 上手くいかないシリーズ
