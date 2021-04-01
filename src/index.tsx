@@ -9,7 +9,7 @@ import FookPersist from './FookPersist';
 ReactDOM.render(
   <React.StrictMode>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossOrigin="anonymous"></link>
-    <FookPersist />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
